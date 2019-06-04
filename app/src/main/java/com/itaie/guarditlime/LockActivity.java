@@ -29,7 +29,7 @@ public class LockActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Do something in response to button click
                 // Instantiate the RequestQueue.
-                String url = "http://192.168.43.131/close";
+                String url = "http://192.168.43.194/close";
                 sendHttpCall(url,queue);
                 moveAtivity();
             }

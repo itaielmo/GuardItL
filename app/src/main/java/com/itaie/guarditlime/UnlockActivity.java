@@ -12,7 +12,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.itaie.guarditlime.R;
 
 public class UnlockActivity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class UnlockActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Do something in response to button click
                 // Instantiate the RequestQueue.
-                String url = "http://192.168.43.131/open";
+                String url = "http://192.168.43.194/open";
                 sendHttpCall(url,queue);
                 moveAtivity();
             }

@@ -2,11 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.itaie.guarditlime">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- <uses-permission android:name="android.permission.GET_TASKS"/> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/guardit_icon"
+        android:icon="@mipmap/lime_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/guardit_icon"
+        android:roundIcon="@mipmap/lime_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LockActivity"></activity>
