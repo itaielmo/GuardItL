@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UnlockActivity"
-    android:background="@drawable/unlock_activity_lime">
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:src="@drawable/unlock_activity_lime"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-    <Button
-        android:id="@+id/unlockButton"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="38dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897"
-        tools:ignore="MissingConstraints" />
+    <ToggleButton
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="32dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/lock_toggle_button"
+        android:checked="false"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:textOn=""
+        android:textOff=""
+        android:background="@drawable/lock_toggle_button"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge"
+        android:id="@+id/loading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 
-
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

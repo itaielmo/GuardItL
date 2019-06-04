@@ -14,8 +14,7 @@
         android:roundIcon="@mipmap/lime_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LockActivity"></activity>
-        <activity android:name=".UnlockActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
