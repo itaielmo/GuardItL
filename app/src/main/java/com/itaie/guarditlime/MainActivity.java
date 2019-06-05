@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 buttonWrapper.setClickable(true);
+                lock = !lock;
                 showLoadingProgress(false);
                 Toast.makeText(MainActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
             }
