@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.ToggleButton;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,9 +18,11 @@ import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ToggleButton mLockToggleButton;
+    //private ToggleButton mLockToggleButton;
     private ImageView mBackgroundImage;
     private ProgressBar mLoadingProgress;
+    private View buttonWrapper;
+    private boolean lock = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
         mBackgroundImage = findViewById(R.id.background_image);
         mLoadingProgress = findViewById(R.id.loading_progress);
-        mLockToggleButton = findViewById(R.id.lock_toggle_button);
-        mLockToggleButton.setOnClickListener(new View.OnClickListener() {
+        buttonWrapper = findViewById(R.id.button_wrapper);
+        buttonWrapper.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
                 // Instantiate the RequestQueue.
-                mLockToggleButton.setClickable(false);
+                lock = !lock;
+                buttonWrapper.setClickable(false);
                 showLoadingProgress(true);
-                String url = mLockToggleButton.isChecked() ? "http://192.168.43.194/open" : "http://192.168.43.194/close";
+                String url = lock ? "http://192.168.43.194/close" : "http://192.168.43.194/open";
                 sendHttpCall(url,queue);
             }
         });
@@ -68,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        mLockToggleButton.setClickable(true);
+                        buttonWrapper.setClickable(true);
+                        mBackgroundImage.setBackgroundResource(lock ? R.drawable.lock_activity_lime : R.drawable.unlock_activity_lime);
                         showLoadingProgress(false);
                         // Display the first 500 characters of the response string.
                         //textView.setText("Response is: "+ response.substring(0,500));
@@ -76,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mLockToggleButton.setClickable(true);
+                buttonWrapper.setClickable(true);
                 showLoadingProgress(false);
-                //textView.setText("That didn't work!");
+                Toast.makeText(MainActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
 
